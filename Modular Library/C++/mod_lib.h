@@ -22,7 +22,7 @@ class mod_lib
     }
     ll mul (ll a, ll b)
     {
-        return ((a%mod)-(b%mod))%mod;
+        return ((a%mod)*(b%mod))%mod;
     }
     ll powmod(ll x, ll n)
     {
