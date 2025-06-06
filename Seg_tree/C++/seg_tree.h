@@ -1,6 +1,7 @@
 #ifndef SEG_TREE
 #define SEG_TREE
 #include<vector>
+#include<cmath>
 class seg_tree
 {
     public:
@@ -10,12 +11,19 @@ class seg_tree
     {
         int n = v.size();
         st.resize(4*n,0);
-        sz=n;
-        for(int i =n;i<2*n;i++)
+        sz=pow(2,ceil(log2(n)));
+        int x=0;
+        for(int i =sz;i<sz+n;i++)
         {
-            st[i]=v[i-n];
+            st[i]=v[x++];
         }
-        for(int i =n-1;i>0;i--)
+        for(int i =sz+n;i<2*sz;i++)
+        {
+            st[i]=0;//sum
+            //st[i]=INT_MIN //max tree
+            //st[i]=INT_MAX //min tree
+        }
+        for(int i =sz-1;i>0;i--)
         {
             st[i] = st[(i<<1)]+st[(i<<1)|1];
             // st[i] = std::min(st[(i<<1)],st[(i<<1)|1])
