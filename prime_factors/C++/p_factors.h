@@ -18,6 +18,6 @@ void p_factors(int &n,std::map<int,int>&mp)
         mp[i]++;
     }
    }
-   if(tmp>1)mp[n]=1;
+   if(tmp>1)mp[tmp]=1;
 }
 #endif
